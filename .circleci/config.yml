@@ -53,6 +53,29 @@ jobs:
       - run:
           name: Run tests
           command:  npx nightwatch ~/Siemens-QA-Task/nightwatch/tests/searchDressTest.js 
+  testAPI:
+    docker:
+      - image: cimg/node:lts-browsers
+    working_directory: ~/Siemens-QA-Task/APITesting/
+    steps:
+      - checkout:
+          path: ~/Siemens-QA-Task
+      - run:
+          name: install mock user    
+          command: |
+            npm i --save mock-user-auth 
+            npm install supertest --save-dev
+            npm install --save-dev mocha
+            npm install chai
+      - run:
+          name: run mock server    
+          background: true
+          command: 
+            npm run dev
+      - run:
+          name: run api scripts    
+          command: 
+            npm run test
 
 workflows:
   test:
