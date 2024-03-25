@@ -1,6 +1,6 @@
 ## Testing My Store Contact Form and Dress Search Feature with NightwatchJS and Mocha-Auth-User API Routes with SuperTest
 
-[![CircleCI](https://circleci.com/gh/fady-ibrahim96/Siemens-QA-Task.svg?style=svg)](https://app.circleci.com/pipelines/github/fady-ibrahim96/Siemens-QA-Task)
+[![CircleCI](https://circleci.com/gh/fady-ibrahim96/Siemens-QA-Task/tree/main.svg?style=svg)](https://app.circleci.com/pipelines/github/fady-ibrahim96/Siemens-QA-Task/tree/main)
 
 ## Overview
 
