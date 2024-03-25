@@ -75,9 +75,11 @@ jobs:
             npm run dev
       - run:
           name: run api scripts    
-          command: 
+          command:  |
+            sleep 10
             sudo chmod +x node_modules/.bin/mocha
-            npm run test
+            npx mocha APITesting.js --endpoint http://localhost:3000
+          when: on_success 
 
 workflows:
   test:
