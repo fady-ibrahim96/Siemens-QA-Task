@@ -1,0 +1,32 @@
+{
+"contactUs":{
+    "contactUsUrl":"http://automationpractice.multiformis.com/index.php?controller=contact",
+    "title": "Contact us - My Store",
+    "Message":"Contact Me",
+    "webMasterMessage":"If a technical problem occurs on this website",
+    "customerServiceMessage":"For any question about a product, an order",
+    "invalidEmail":"fady.ibrahimmansour",
+    "validEmail":"fady.ibrahimmansour@gmail.com",
+    "invalidEmailMessage":"Invalid email address.",
+    "noSubjectErrorMessage":"Please select a subject from the list provided.",
+    "noMessageErrorMessage":"The message cannot be blank.",
+    "successMessage":"Your message has been successfully sent to our team.",
+    "filePath": "../../nightwatch/upload/test.txt"
+
+
+},
+"searchDress":{
+    "searchDressUrl":"http://automationpractice.multiformis.com/index.php",
+    "searchWord":"dress"
+
+}
+
+
+}
+
+
+
+
+
+
+

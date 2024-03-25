@@ -1,0 +1,246 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 8,
+    "passes": 5,
+    "pending": 0,
+    "failures": 3,
+    "start": "2024-03-25T15:21:32.162Z",
+    "end": "2024-03-25T15:21:32.259Z",
+    "duration": 97,
+    "testsRegistered": 8,
+    "passPercent": 62.5,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "0278be6b-fc4d-48f3-a4f1-20d862c9990a",
+      "title": "",
+      "fullFile": "/Users/apple/Desktop/Siemens-QA-Task/APITesting/API-Testing.js",
+      "file": "/API-Testing.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "a42f9589-d44d-4c56-a8ae-c364d7dc9b32",
+          "title": "API Routes",
+          "fullFile": "/Users/apple/Desktop/Siemens-QA-Task/APITesting/API-Testing.js",
+          "file": "/API-Testing.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "validate creating new user",
+              "fullTitle": "API Routes validate creating new user",
+              "timedOut": false,
+              "duration": 43,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "const response = await request(app)\n.post('/api/v1/users')\n.send(({name:'fady',email:'fady.ibrahimmansour@gmail.com',password:'user123'}))\nexpect(response.status).to.equal(200);\nexpect(response.body).to.have.property('token');\nexpect(response.body).to.have.property('message');",
+              "err": {
+                "message": "AssertionError: expected { Object (message) } to have property 'token'",
+                "estack": "AssertionError: expected { Object (message) } to have property 'token'\n    at Context.<anonymous> (API-Testing.js:11:39)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)",
+                "diff": null
+              },
+              "uuid": "9db1adf8-5a17-4ef6-9964-994e0a6344ef",
+              "parentUUID": "a42f9589-d44d-4c56-a8ae-c364d7dc9b32",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "validate authenticating newly created user",
+              "fullTitle": "API Routes validate authenticating newly created user",
+              "timedOut": false,
+              "duration": 6,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const response = await request(app)\n.post('/api/v1/auth')\n.send(({email:'fady.ibrahimmansour@gmail.com',password:'user123'}))\nexpect(response.status).to.equal(200);\nexpect(response.body).to.have.property('token');\ntoken=response.body.token",
+              "err": {},
+              "uuid": "451dff00-b240-4ca7-9f41-e36886465f52",
+              "parentUUID": "a42f9589-d44d-4c56-a8ae-c364d7dc9b32",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "validate on error code when authenticating newly created user with no body sent",
+              "fullTitle": "API Routes validate on error code when authenticating newly created user with no body sent",
+              "timedOut": false,
+              "duration": 3,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const response = await request(app)\n.post('/api/v1/auth')\nexpect(response.status).to.equal(401);",
+              "err": {},
+              "uuid": "f572a97f-890c-445f-bdfa-334c4d1a945f",
+              "parentUUID": "a42f9589-d44d-4c56-a8ae-c364d7dc9b32",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "validate getting user with a specific token",
+              "fullTitle": "API Routes validate getting user with a specific token",
+              "timedOut": false,
+              "duration": 6,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const response = await request(app)\n.get('/api/v1/users')\n.set('Authorization', token);\nexpect(response.status).to.equal(200);\nexpect(response.body).to.have.property('id');\nexpect(response.body).to.have.property('name');\nexpect(response.body.name).to.equal('fady');\nexpect(response.body).to.have.property('email');\nexpect(response.body.email).to.equal('fady.ibrahimmansour@gmail.com');\nexpect(response.body).to.have.property('password');\nexpect(response.body.password).to.equal('user123');\nexpect(response.body).to.have.property('imageUrl');",
+              "err": {},
+              "uuid": "71f375f3-40a8-4352-a111-40f09e9513ed",
+              "parentUUID": "a42f9589-d44d-4c56-a8ae-c364d7dc9b32",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "validate updating user with a specific token",
+              "fullTitle": "API Routes validate updating user with a specific token",
+              "timedOut": false,
+              "duration": 8,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "const response = await request(app)\n.patch('/api/v1/users')\n.set('Authorization', token)\n.send(({name:'ibrahim',email:'fady.ibrahim@gmail.com',password:'user12345'}));\nexpect(response.status).to.equal(200);\nexpect(response.body).to.have.property('message');\nexpect(response.body.message).to.equal('User updated with success');",
+              "err": {
+                "message": "AssertionError: expected 'User updated with success!' to equal 'User updated with success'",
+                "estack": "AssertionError: expected 'User updated with success!' to equal 'User updated with success'\n    at Context.<anonymous> (API-Testing.js:52:42)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)",
+                "diff": "- User updated with success!\n+ User updated with success\n"
+              },
+              "uuid": "75a67f9b-2906-47e2-8508-6e5bcd3b4e57",
+              "parentUUID": "a42f9589-d44d-4c56-a8ae-c364d7dc9b32",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "validate delete user with a specific token",
+              "fullTitle": "API Routes validate delete user with a specific token",
+              "timedOut": false,
+              "duration": 5,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "const response = await request(app)\n.delete('/api/v1/users')\n.send('Authorization', token)\nexpect(response.status).to.equal(200);\nexpect(response.body).to.have.property('message');\nexpect(response.body.message).to.equal('User deleted with success');",
+              "err": {
+                "message": "AssertionError: expected 403 to equal 200",
+                "estack": "AssertionError: expected 403 to equal 200\n    at Context.<anonymous> (API-Testing.js:59:36)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)",
+                "diff": "- 403\n+ 200\n"
+              },
+              "uuid": "9196ec61-7ca8-451c-a963-93a489b6c2c3",
+              "parentUUID": "a42f9589-d44d-4c56-a8ae-c364d7dc9b32",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "validate deleting all user with key admin token",
+              "fullTitle": "API Routes validate deleting all user with key admin token",
+              "timedOut": false,
+              "duration": 8,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const response = await request(app)\n.delete('/api/v1/all-users')\n.send(({key_admin: \"keyadmin123\"}))\nexpect(response.status).to.equal(200);\nexpect(response.body).to.have.property('message');\nexpect(response.body.message).to.equal('Users deleted with success');",
+              "err": {},
+              "uuid": "0b7ac9cb-cca1-48f7-8d03-5f6f03507dd6",
+              "parentUUID": "a42f9589-d44d-4c56-a8ae-c364d7dc9b32",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "validate deleting all user with invalid key admin token",
+              "fullTitle": "API Routes validate deleting all user with invalid key admin token",
+              "timedOut": false,
+              "duration": 5,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const response = await request(app)\n.delete('/api/v1/all-users')\n.send(({key_admin: \"keyadmin456\"}))\nexpect(response.status).to.equal(403);",
+              "err": {},
+              "uuid": "4ea668e1-4e1f-4d30-97a5-83b2cd6efe57",
+              "parentUUID": "a42f9589-d44d-4c56-a8ae-c364d7dc9b32",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "451dff00-b240-4ca7-9f41-e36886465f52",
+            "f572a97f-890c-445f-bdfa-334c4d1a945f",
+            "71f375f3-40a8-4352-a111-40f09e9513ed",
+            "0b7ac9cb-cca1-48f7-8d03-5f6f03507dd6",
+            "4ea668e1-4e1f-4d30-97a5-83b2cd6efe57"
+          ],
+          "failures": [
+            "9db1adf8-5a17-4ef6-9964-994e0a6344ef",
+            "75a67f9b-2906-47e2-8508-6e5bcd3b4e57",
+            "9196ec61-7ca8-451c-a963-93a489b6c2c3"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 84,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "10.3.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}
