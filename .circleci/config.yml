@@ -78,7 +78,7 @@ jobs:
           command:  |
             sleep 10
             sudo chmod +x node_modules/.bin/mocha
-            npx mocha APITesting.js --endpoint http://localhost:3000
+            npx mocha API-Testing.js --endpoint http://localhost:3000
           when: on_success 
 
 workflows:
