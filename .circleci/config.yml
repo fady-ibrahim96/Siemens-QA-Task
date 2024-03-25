@@ -67,6 +67,7 @@ jobs:
             npm install supertest --save-dev
             npm install --save-dev mocha
             npm install chai
+            npm install nodemon --save-dev
       - run:
           name: run mock server    
           background: true
@@ -75,6 +76,7 @@ jobs:
       - run:
           name: run api scripts    
           command: 
+            sudo chmod +x node_modules/.bin/mocha
             npm run test
 
 workflows:
