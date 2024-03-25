@@ -1,0 +1,145 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2024-03-25T15:14:54.842Z",
+    "end": "2024-03-25T15:15:04.952Z",
+    "duration": 10110,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "99f99f3e-82a5-45a7-8037-7ffb311eaa71",
+      "title": "",
+      "fullFile": "/Users/apple/Desktop/Siemens-QA-Task/nightwatch/tests/searchDressTest.js",
+      "file": "/nightwatch/tests/searchDressTest.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "9149b272-3c42-4262-b8ab-21ef5ad2d302",
+          "title": "Search Dress",
+          "fullFile": "/Users/apple/Desktop/Siemens-QA-Task/nightwatch/tests/searchDressTest.js",
+          "file": "/nightwatch/tests/searchDressTest.js",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook in \"Search Dress\"",
+              "fullTitle": "Search Dress \"before all\" hook in \"Search Dress\"",
+              "timedOut": false,
+              "duration": 6584,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "browser.navigateTo(searchDresssPageData.searchDress.searchDressUrl)",
+              "err": {},
+              "uuid": "268fed31-37e0-4403-a11b-8d65092dd663",
+              "parentUUID": "9149b272-3c42-4262-b8ab-21ef5ad2d302",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after all\" hook in \"Search Dress\"",
+              "fullTitle": "Search Dress \"after all\" hook in \"Search Dress\"",
+              "timedOut": false,
+              "duration": 78,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "browser.end()",
+              "err": {},
+              "uuid": "aad5b86a-1a90-4e53-8a2e-a35ac02e15e5",
+              "parentUUID": "9149b272-3c42-4262-b8ab-21ef5ad2d302",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "assert search result are all dresses",
+              "fullTitle": "Search Dress assert search result are all dresses",
+              "timedOut": false,
+              "duration": 1950,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "searchDressPage.waitForBodyAndSearchBox(browser);\nsearchDressPage.searchForDress(browser);\nsearchDressPage.waitForResults(browser)\nsearchDressPage.checkResults(browser);",
+              "err": {
+                "message": "NightwatchAssertError: Failed [ok]: (Product name \"Faded Short Sleeves T-shirt\" should contain 'dress') - expected \"true\" but got: \"false\" (0ms)",
+                "estack": "",
+                "diff": null
+              },
+              "uuid": "ccdf105c-57ad-42ac-90ce-0d6d01ca4aeb",
+              "parentUUID": "9149b272-3c42-4262-b8ab-21ef5ad2d302",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "ccdf105c-57ad-42ac-90ce-0d6d01ca4aeb"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 1950,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 20000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 20000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "10.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "reports",
+        "reportName": "index"
+      },
+      "version": "6.2.0"
+    }
+  }
+}
