@@ -82,5 +82,6 @@ workflows:
     jobs:
       - testSearchDress
       - testContactUs
+      - testAPI
       
 
