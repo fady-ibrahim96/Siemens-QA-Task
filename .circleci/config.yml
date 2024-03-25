@@ -1,0 +1,63 @@
+# Couldn't automatically generate a config from your source code.
+# This is a generic template to serve as a base for your custom config
+# See: https://circleci.com/docs/configuration-reference
+version: 2.1
+
+orbs:
+  node: circleci/node@4.7
+  browser-tools: circleci/browser-tools@1.4.8
+  
+jobs:
+  testContactUs:
+    docker:
+      - image: cimg/node:lts-browsers
+    working_directory: ~/Siemens-QA-Task/
+    steps:
+      - checkout:
+          path: ~/Siemens-QA-Task
+          
+      - browser-tools/install-chrome
+
+      - run:
+          name: Install Node.js and npm
+          command: |
+            curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+            sudo apt-get install -y nodejs
+
+      - run:
+          name: Install dependencies
+          command: npm install
+
+      - run:
+          name: Run tests
+          command:  npx nightwatch ~/Siemens-QA-Task/nightwatch/tests/contactUsTest.js 
+
+  testSearchDress:
+    docker:
+      - image: cimg/node:lts-browsers
+    working_directory: ~/Siemens-QA-Task/
+    steps:
+      - checkout:
+          path: ~/Siemens-QA-Task
+      - browser-tools/install-chrome
+      - run:
+          name: Install Node.js and npm
+          command: |
+            curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+            sudo apt-get install -y nodejs
+
+      - run:
+          name: Install dependencies
+          command: npm install
+
+      - run:
+          name: Run tests
+          command:  npx nightwatch ~/Siemens-QA-Task/nightwatch/tests/searchDressTest.js 
+
+workflows:
+  test:
+    jobs:
+      - testSearchDress
+      - testContactUs
+      
+
